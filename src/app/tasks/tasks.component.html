@@ -1,0 +1,20 @@
+@if (isNewTaskDialogOpen) {
+  <app-task-create (cancel)="onCancelNewTask()" (add)="onAddTask($event)" />
+}
+<section id="tasks">
+  <header>
+    <h2>{{ userName }}`s Tasks</h2>
+    <menu>
+      <button (click)="onCreateNewTask()">Add task</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of selectedUserTasks; track task.id) {
+      <li>
+        <app-task [task]="task"/>
+      </li>
+    }
+  </ul>
+</section>
+
